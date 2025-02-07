@@ -1,0 +1,19 @@
+digraph {
+	"" [shape=none]
+	"" -> q0
+	q2 [shape=circle]
+	q4 [shape=doublecircle]
+	q0 [shape=circle]
+	q3 [shape=circle]
+	q1 [shape=circle]
+	q0 -> q1 [label=<<FONT>0/x R<BR/></FONT>>]
+	q0 -> q3 [label=<<FONT>y/y R<BR/></FONT>>]
+	q1 -> q1 [label=<<FONT>0/0 R<BR/></FONT>>]
+	q1 -> q2 [label=<<FONT>1/y L<BR/></FONT>>]
+	q1 -> q1 [label=<<FONT>y/y R<BR/></FONT>>]
+	q2 -> q2 [label=<<FONT>0/0 L<BR/></FONT>>]
+	q2 -> q0 [label=<<FONT>x/x R<BR/></FONT>>]
+	q2 -> q2 [label=<<FONT>y/y L<BR/></FONT>>]
+	q3 -> q3 [label=<<FONT>y/y R<BR/></FONT>>]
+	q3 -> q4 [label=<<FONT>./. R<BR/></FONT>>]
+}
