@@ -12,4 +12,3 @@ class PushdownAutomata(BaseModel):
     initial_stack_symbol: str
     final_states: Set[str]
     acceptance_mode: str
-    my_input: str
