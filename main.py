@@ -1,12 +1,12 @@
 from fastapi import FastAPI, HTTPException
-from mt import TuringMachine
+from Models.mt import TuringMachine
 from automata.tm.dtm import DTM
 from fastapi.responses import FileResponse
-from fa import FiniteAutomata
+from Models.fa import FiniteAutomata
 from automata.fa.dfa import DFA
-from pda import PushdownAutomata
+from Models.pda import PushdownAutomata
 from automata.pda.dpda import DPDA
-from teste_input import Teste
+from Models.teste_input import Teste
 import graphviz
 
 app = FastAPI()
