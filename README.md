@@ -27,3 +27,6 @@ Para a execução deste projeto, é necessário ter o [Python 3](https://www.pyt
 - Verifica se a máquina armazenada aceita um determinado input.
 - Passar o input em JSON no corpo da requisição.
 
+## Exemplos
+Acessar a pasta "exemplos" para ter acesso a um exemplo de uso de cada tipo de máquina.
+
