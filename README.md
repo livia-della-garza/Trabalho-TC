@@ -3,8 +3,10 @@ Esta API permite criar, testar, visualizar e manipular autômatos finitos, autô
 
 ## Configuração
 - Clonar o repositório.
-- Instalar as dependências com o seguinte comando: `pip install fastapi uvicorn automatalib graphviz coloraide`.
-- Rodar a API com `uvicorn main:app --reload`.
+- Criar um ambiente virtual com `python3 -m venv venv` ou `python -m venv venv`
+- Ativar o ambiente virtual com `source venv/bin/activate`
+- Instalar as dependências com o seguinte comando: `pip install fastapi uvicorn automata-lib graphviz pygraphviz coloraide "fastapi[standard]"`.
+- Rodar a API com `fastapi dev main.py`.
 - Clicar no link indicado no terminal.
 - Para acessar a documentação, adicionar `/docs` ao final da URL.
 
