@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Dict, Set, Tuple
+from typing import Dict, Set
 
 class PushdownAutomata(BaseModel):
     states: Set[str]

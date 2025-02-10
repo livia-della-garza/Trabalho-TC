@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Dict, Set, Tuple, Optional
+from typing import Dict, Set, Tuple
 
 class TuringMachine(BaseModel):
     states: Set[str]
