@@ -1,11 +1,14 @@
 # API para manipulação de autômatos
 Esta API permite criar, testar, visualizar e manipular autômatos finitos, autômatos com pilha e máquinas de Turing.
 
+## Requisitos
+Para a execução deste projeto, é necessário ter o [Python 3](https://www.python.org/) instalado no seu sistema. O projeto foi testado com o Python 3.10.12.
+
 ## Configuração
 - Clonar o repositório.
 - Criar um ambiente virtual com `python3 -m venv venv` ou `python -m venv venv`
 - Ativar o ambiente virtual com `source venv/bin/activate`
-- Instalar as dependências com o seguinte comando: `pip install fastapi uvicorn automata-lib graphviz pygraphviz coloraide "fastapi[standard]"`.
+- Instalar as dependências com o seguinte comando: `pip install -r requirements.txt`.
 - Rodar a API com `fastapi dev main.py`.
 - Clicar no link indicado no terminal.
 - Para acessar a documentação, adicionar `/docs` ao final da URL.
