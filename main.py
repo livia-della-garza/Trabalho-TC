@@ -11,13 +11,13 @@ import graphviz
 
 app = FastAPI()
 
-dtm = None
-dfa = None
-pda = None
+dtm = None #Máquina de Turing
+dfa = None #Autômato finito
+pda = None #Autômato com pilha
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+
+
+
 
 ### MÁQUINA DE TURING ###
 
@@ -39,13 +39,11 @@ def create_mt(turing: TuringMachine):
 #Gerar imagem da MT
 @app.get("/mt/image/")
 def get_mt_image():
-    """Gera e retorna a imagem do autômato salvo."""
     global dtm
     if dtm is None:
-        return {"error": "Nenhuma máquina de Turing salva."}
+        raise HTTPException(status_code=404, detail="Nenhuma máquina de Turing criada.")
 
 
-    # Gerar imagem do autômato
     dot = graphviz.Digraph(format="png")
 
     dot.node("", shape="none")  
@@ -59,7 +57,7 @@ def get_mt_image():
     
     for state, transitions in dtm.transitions.items():
         for symbol, (next_state, write, move) in transitions.items():
-            label = f'<<FONT>{symbol}/{write} {move}<BR/></FONT>>'
+            label = f'<<FONT>{symbol}/{write} {move}</FONT>>'
             dot.edge(state, next_state, label=label)
     
     dot.render("dtm", format="png", cleanup=True)
@@ -67,7 +65,7 @@ def get_mt_image():
     return FileResponse("dtm.png", media_type="image/png")
 
 #Retorna informações da MT
-@app.get("/mt/info/")
+@app.get("/mt/")
 def get_mt_info():
     global dtm
     if dtm is None:
@@ -90,10 +88,13 @@ def test_mt(teste: Teste):
     return {"accepts": dtm.accepts_input(teste.my_input)}
 
 
+
+
+
 ### AUTÔMATO FINITO ###
 
 #Criar AF
-@app.post("/fa/")
+@app.post("/fa")
 def create_fa(finite: FiniteAutomata):
     global dfa
     dfa = DFA(
@@ -103,7 +104,7 @@ def create_fa(finite: FiniteAutomata):
         initial_state=finite.initial_state,
         final_states=finite.final_states,
     )
-    return {"message": "Autômato Finito criado com sucesso."}
+    return {"message": "Autômato finito criado com sucesso."}
 
 #Gerar imagem do AF
 @app.get("/fa/image/")
@@ -117,7 +118,7 @@ def get_fa_image():
     return FileResponse("dfa.png", media_type="image/png")
 
 #Retorna informações do AF
-@app.get("/fa/info/")
+@app.get("/fa/")
 def get_fa_info():
     global dfa
     if dfa is None:
@@ -138,6 +139,10 @@ def test_fa(teste: Teste):
         raise HTTPException(status_code=404, detail="Nenhum autômato finito criado.")
     return {"accepts": dfa.accepts_input(teste.my_input)}
 
+
+
+
+
 ### AUTÔMATO COM PILHA ###
 
 #Criar PDA
@@ -154,7 +159,7 @@ def create_pda(pushdown: PushdownAutomata):
         final_states=pushdown.final_states,
         acceptance_mode=pushdown.acceptance_mode
     )
-    return {"message": "Autômato com Pilha criado com sucesso."}
+    return {"message": "Autômato com pilha criado com sucesso."}
 
 #Gerar a imagem do PDA
 @app.get("/pda/image/")
@@ -168,7 +173,7 @@ def get_pda_image():
     return FileResponse("pda.png", media_type="image/png")
 
 #Retornar informações do PDA
-@app.get("/pda/info/")
+@app.get("/pda/")
 def get_pda_info():
     global pda
     if pda is None:
